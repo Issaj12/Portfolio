@@ -1,7 +1,7 @@
 # Django Portfolio
 
 A modern, feature-rich portfolio website built with Django 6.0. Showcase your skills, work experience, education, services, and manage contact inquiries with an intuitive admin dashboard.
-
+## live on https://portfolio-1gac.onrender.com/
 ## 🌟 Features
 
 - **Landing Page** - Eye-catching main page to introduce yourself
