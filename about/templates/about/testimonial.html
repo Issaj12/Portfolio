@@ -1,0 +1,28 @@
+{% extends "start.html" %}
+{% load static %}
+
+
+{% block content %}
+  <h2 style="text-align: center;">Testimonial Details</h2>
+  <div class="testimonial-detail">
+    {% if testimonial.client_photo %}
+      <img src="{{ testimonial.client_photo.url }}" alt="{{ testimonial.client_name }}">
+    {% endif %}
+    <strong>{{ testimonial.client_name }}</strong>
+    {% if testimonial.contact_info %}
+        Contact Info: {{ testimonial.contact_info }}<br>
+      {% endif %}
+           {% if testimonial.email %}
+        Email: {{ testimonial.email }}<br>
+      {% endif %}
+    <p>“{{ testimonial.content }}”</p>
+    <span>
+      {% if testimonial.service %}
+        Service offered<br>({{ testimonial.service.title }})
+        <br>
+      {% endif %}
+    <a href="{% url 'about_testimonials' %}" class="btn">Back to Testimonials</a>  
+    </span>
+    
+  </div>
+{% endblock %}

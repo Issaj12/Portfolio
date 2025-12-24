@@ -1,0 +1,17 @@
+{% extends "start.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">CVs</h2>
+
+<div class="cv-list">
+  {% for cv in cvs %}
+    <div class="cv-card">
+      <h3>{{ cv.name }}</h3>
+      <p>{{ cv.content|truncatechars:100 }}</p>
+      <a href="{% url 'cv_detail' cv.id %}" class="btn">View Details</a>
+    </div>
+  {% empty %}
+    <p>No CVs uploaded yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

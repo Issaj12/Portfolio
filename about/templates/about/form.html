@@ -1,0 +1,17 @@
+{% extends "start.html" %}
+
+{% block content %}
+<div class="about-form-container">
+  <h2 class="about-form-title">{{ title }}</h2>
+
+  <form method="post" enctype="multipart/form-data" class="about-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <div class="about-form-actions">
+        <button type="submit" class="btn btn-about-primary">Save</button>
+        <a href="javascript:history.back()" class="btn btn-about-secondary">Cancel</a>
+      </div>
+  </form>
+</div>
+{% endblock %}

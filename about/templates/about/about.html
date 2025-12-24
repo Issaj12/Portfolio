@@ -1,0 +1,92 @@
+<!-- about/about.html -->
+{% extends "start.html" %}
+
+{% block content %}
+ <div class="skill-list-container">
+<div class="about-navbar">
+  <a href="{% url 'about' %}" class="{% if section == 'education' %}active{% endif %}">Education</a>
+  <a href="{% url 'about_services' %}" class="{% if section == 'services' %}active{% endif %}">Services</a>
+  <a href="{% url 'about_testimonials' %}" class="{% if section == 'testimonials' %}active{% endif %}">Testimonials</a>
+   <a href="{% url 'cv_list' %}" class="{% if section == 'cvs' %}active{% endif %}">CVs</a>
+</div>
+
+<div class="about-content">
+
+  {% if section == 'education' %}
+    <h2 style="text-align: center;">Education Background</h2>
+    {% for edu in education_list %}
+      <div class="about-block">
+        <h3>{{ edu.course }}</h3>
+        <p>{{ edu.institution }}</p>
+        <span>{{ edu.start_year }} – {{ edu.end_year|default:"Present" }}</span>
+        <p>{{ edu.description }}</p>
+      </div>
+    {% empty %}
+      <p>No education records available.</p>
+    {% endfor %}
+
+  {% elif section == 'services' %}
+    <h2 style="text-align: center;">Services I Offer</h2>
+    <ul class="services-list">
+      {% for service in services %}
+        <li><strong>{{ service.title }}</strong>
+          <br>{{ service.description }}
+        <br>Location:{{service.location}}
+      <br><a href="{% url 'contact' %}" class="btn">Order service</a>
+      </li>
+
+      {% empty %}
+        <p>No services listed.</p>
+      {% endfor %}
+    </ul>
+
+ {% elif section == 'testimonials' %}
+<h2 style="text-align: center;">Testimonials</h2>
+<a href="{%url 'testimonial_create'  %}" class="btn" >Recommend Me</a>
+<div class="testimonial-container">
+  {% for testimonial in testimonials %}
+    <div class="testimonial">
+      {% if testimonial.client_photo %}
+        <img src="{{ testimonial.client_photo.url }}" alt="{{ testimonial.client_name }}">
+      {% endif %}
+      <strong>{{ testimonial.client_name }}</strong>
+      <p>{{ testimonial.content|truncatechars:100|safe }}</p>
+
+      <span>
+        {% if testimonial.service %}
+          Service offered<br>({{ testimonial.service.title }})
+        {% endif %}
+      </span>
+      <a href="{%url 'testimonial_detail' testimonial.id %}" class="btn">View Details</a>
+    </div>
+  {% empty %}
+    <p>No testimonials yet.</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+
+
+{% if section == 'cvs' %}
+<h2 style="text-align: center;">CVs</h2>
+
+<div class="cv-container">
+  {% for cv in cvs %}
+    <div class="cv-card">
+      <h3>{{ cv.name }}</h3>
+      <p>{{ cv.content|truncatechars:150 }}</p>
+      {% if cv.file %}
+        <a href="{{ cv.file.url }}" target="_blank" class="btn">Download CV</a>
+      {% endif %}
+      <a href="{% url 'cv_detail' cv.id %}" class="btn">View Details</a>
+    </div>
+  {% empty %}
+    <p style="text-align:center;">No CVs uploaded yet.</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+</div>
+</div>
+
+{% endblock %}

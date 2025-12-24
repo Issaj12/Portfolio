@@ -1,0 +1,16 @@
+{% extends "start.html" %}
+
+{% block content %}
+<div class="cv-detail">
+  <h2>{{ cv.name }}</h2>
+  <p>{{ cv.content }}</p>
+  
+  {% if cv.file %}
+    <p>
+      <a href="{{ cv.file.url }}" class="btn" download>Download CV</a>
+    </p>
+  {% endif %}
+  
+  <a href="{% url 'cv_list' %}" class="btn">← Back to CVs</a>
+</div>
+{% endblock %}

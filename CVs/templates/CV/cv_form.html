@@ -1,0 +1,38 @@
+{% extends "start.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2 style="text-align:center;">{{ title }}</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class="form-error">{{ form.name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.content.label_tag }}
+            {{ form.content }}
+            {% if form.content.errors %}
+                <div class="form-error">{{ form.content.errors }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.file.label_tag }}
+            {{ form.file }}
+            {% if form.file.errors %}
+                <div class="form-error">{{ form.file.errors }}</div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn">{{ title }}</button>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-cancel">Cancel</a>
+    </form>
+</div>
+{% endblock %}

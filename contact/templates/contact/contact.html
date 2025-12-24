@@ -1,0 +1,72 @@
+  {% extends 'start.html' %}
+  {% load static %}
+
+  {% block content %}
+  {% if user.is_authenticated and user.is_staff %}<div class="skill-list-container"> {% endif %}
+  <section class="section contact">
+    <h2>Contact Me</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="form-message">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <div class="contact-wrapper">
+      <!-- Contact Form -->
+      <form method="post" class="contact-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Optional Contact Info -->
+    <div class="contact-info">
+    <h3>Get in Touch</h3>
+    
+    <!-- Gmail -->
+    <p>
+      <a href="mailto:g12.josiah1@gmail.com" target="_blank" class="contact-link">
+        <img src="{% static 'images/gmail.png' %}" alt="Gmail" class="contact-icon"/> Gmail
+      </a>
+    </p>
+
+    <!-- WhatsApp -->
+    <p>
+      <a href="https://wa.me/254791192398" target="_blank" class="contact-link">
+        <img src="{% static 'images/whatsapp.png' %}" alt="WhatsApp" class="contact-icon"/> WhatsApp
+      </a>
+    </p>
+
+    <!-- LinkedIn -->
+    <p>
+      <a href="https://www.linkedin.com/in/josiah-mwangi-aa11ba384" target="_blank" class="contact-link">
+        <img src="{% static 'images/linked_in.png' %}" alt="LinkedIn" class="contact-icon"/> LinkedIn
+      </a>
+    </p>
+
+    <!-- Instagram
+    <p>
+      <a href="https://www.instagram.com/yourprofile/" target="_blank" class="contact-link">
+        <img src="{% static 'images/instagram.png' %}" alt="Instagram" class="contact-icon"/> Instagram
+      </a>
+    </p> -->
+
+    <!-- GitHub -->
+    <p>
+      <a href="https://github.com/Issa-Josiah" target="_blank" class="contact-link">
+        <img src="{% static 'images/github.png' %}" alt="GitHub" class="contact-icon"/> GitHub
+      </a>
+    </p>
+
+    <!-- Facebook -->
+    <p>
+      <a href="https://web.facebook.com/IssaJosiah.G12/" target="_blank" class="contact-link">
+        <img src="{% static 'images/facebook.png' %}" alt="Facebook" class="contact-icon"/> Facebook
+      </a>
+    </p>
+  </div>
+
+  </section>
+  </div>
+  {% endblock %}
