@@ -1,0 +1,14 @@
+{% extends 'start.html' %}
+{% block content %}
+<div class="section">
+    <h2>{% if skill %}Edit Skill{% else %}Add Skill{% endif %}</h2>
+    <form method="POST" enctype="multipart/form-data" class="contact-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="skill-actions">
+            <button type="submit" class="btn">{% if skill %}Update{% else %}Create{% endif %}</button>
+            <a href="{% url 'skill_list' %}" class="btn">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

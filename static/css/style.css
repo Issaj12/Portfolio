@@ -1,0 +1,772 @@
+/* =========================
+   COLOR VARIABLES
+========================= */
+:root {
+  --accent-primary: #dc493a;
+  --text-muted: #66666e;
+  --text-main: #c3c9e9;
+  --accent-soft: #def2c8;
+  --accent-secondary: #afbe8f;
+  --bg-dark: #0f0f14;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+/* =========================
+   TOGGLE CIRCULAR NAV
+========================= */
+.circle-wrapper {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 140px;
+  height: 140px;
+  z-index: 1000;
+}
+
+/* Toggle Button */
+.circle-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.circle-toggle:hover {
+  background: var(--accent-soft);
+  color: #000;
+}
+
+/* Navigation Items */
+.circle-nav {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transition: all 0.4s ease;
+}
+
+/* Open State */
+.circle-wrapper.open .circle-nav {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Nav Links */
+.circle-nav a {
+  position: absolute;
+  width: 80px;
+  padding: 6px;
+  text-align: center;
+  background: var(--accent-secondary);
+  color: #000;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s, background 0.3s;
+}
+
+/* Circular positioning */
+.circle-nav a:nth-child(1) { transform: rotate(0deg) translate(70px) rotate(0deg); }
+.circle-nav a:nth-child(2) { transform: rotate(72deg) translate(70px) rotate(-72deg); }
+.circle-nav a:nth-child(3) { transform: rotate(144deg) translate(70px) rotate(-144deg); }
+.circle-nav a:nth-child(4) { transform: rotate(216deg) translate(70px) rotate(-216deg); }
+.circle-nav a:nth-child(5) { transform: rotate(288deg) translate(70px) rotate(-288deg); }
+
+.circle-nav a:hover {
+  background: var(--accent-soft);
+}
+
+
+/* =========================
+   NAVBAR2 (ADMIN TOP BAR)
+========================= */
+.navbar2 {
+  width: 100%;
+  background: var(--bg-dark);
+  border-bottom: 2px solid var(--accent-primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 12px 80px; /* match your page horizontal margins */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar2 .logo {
+  font-weight: bold;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.navbar2 .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar2 .nav-links li a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar2 .nav-links li a:hover {
+  color: var(--accent-soft);
+}
+.hide_list{
+  list-style-type: none;
+  text-align: center;
+  color:var(--text-main);
+  font-size: large;
+}
+/* Adjust body content for fixed navbar */
+body.admin-dashboard {
+  padding-top: 60px; /* height of navbar2 */
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+/* =========================
+   CLARK-STYLE HERO SPACING
+========================= */
+.hero-modern {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200px 80px; /* TOP/BOTTOM 200px, LEFT/RIGHT 80px */
+  gap: 80px;
+  text-align: left;
+}
+
+/* LEFT SIDE */
+.hero-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+ 
+}
+.direction{
+   flex-direction: column;
+    text-align: center;
+}
+
+/* RIGHT SIDE */
+.hero-right {
+  flex: 1;
+}
+
+.hero-right h1 {
+  font-size: 3.5rem;
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-main);
+  max-width: 520px;
+  margin-bottom: 35px;
+}
+
+/* Buttons */
+.hero-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-secondary {
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  color: var(--text-main);
+}
+
+.hero-secondary:hover {
+  background: var(--accent-soft);
+  color: #000;
+}
+
+/* Image refinement */
+.hero-modern .profile-img {
+  width: 300px;
+  height: 300px;
+  border-width: 5px;
+}
+.hide_link{
+  text-decoration: none;
+  color:var(--text-main);
+}
+
+form input.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--text-muted);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-main);
+  margin-bottom: 15px;
+}
+
+form input.form-input:focus {
+  border-color: var(--accent-primary);
+  outline: none;
+}
+
+form button.btn {
+  width: 100%;
+  padding: 12px;
+}
+
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .hero-modern {
+    flex-direction: column;
+    text-align: center;
+    padding: 150px 40px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-modern {
+    padding: 120px 25px;
+  }
+
+  .hero-right h1 {
+    font-size: 2.6rem;
+  }
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  background: var(--accent-primary);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--accent-soft);
+  color: #000;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+.section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  color: var(--accent-secondary);
+  margin-bottom: 25px;
+}
+
+.section p {
+  max-width: 700px;
+  margin: auto;
+  color: var(--text-main);
+}
+
+/* =========================
+   SKILLS
+========================= */
+.skill {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.skill span {
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.bar {
+  height: 10px;
+  background: var(--text-muted);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.bar div {
+  height: 100%;
+  width: 0;
+  background: var(--accent-primary);
+  border-radius: 10px;
+  transition: width 1.2s ease;
+}
+
+/* =========================
+   PORTFOLIO
+========================= */
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  height: 200px;
+  background: #181822;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--text-main);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+/* =========================
+   CONTACT SECTION
+========================= */
+.section.contact {
+  background-color: #1a1a24;
+  padding: 100px 20px;
+  border-radius: 15px;
+  max-width: 1000px;
+  margin: 80px auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.section.contact h2 {
+  color: var(--accent-primary);
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+}
+
+/* Wrapper: form + info side by side */
+.contact-wrapper {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+.contact-form {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #0f0f14;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  background-color: #1a1a24;
+  border: 1.5px solid var(--text-muted);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent-primary);
+  outline: none;
+  box-shadow: 0 0 10px rgba(220, 73, 58, 0.3);
+}
+
+.contact-form button {
+  align-self: flex-center;
+  padding: 12px 35px;
+  background-color: var(--accent-primary);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: var(--accent-soft);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+
+/* Form messages */
+.form-message {
+  text-align: center;
+  font-weight: bold;
+  color: var(--accent-secondary);
+  margin-bottom: 20px;
+}
+
+/* =========================
+   CONTACT INFO
+========================= */
+.contact-info {
+  flex: 1 1 300px;
+  background-color: #0f0f14;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.contact-info h3 {
+  color: var(--accent-primary);
+  margin-bottom: 20px;
+}
+
+.contact-info a {
+  color: var(--accent-soft);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: var(--accent-primary);
+}
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  color: var(--accent-soft);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent-primary);
+  transform: translateX(3px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+}
+
+/* =========================
+   WORK EXPERIENCE - LIST
+========================= */
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.work-card {
+  background: #181822;
+  border-radius: 18px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.work-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(220, 73, 58, 0.25);
+}
+
+.work-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  background: #0f0f14;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.work-card h3 {
+  color: var(--accent-primary);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.work-card p {
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+/* Buttons inside card */
+.work-card .btn {
+  margin-top: 10px;
+}
+
+.btn-edit {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 22px;
+  border-radius: 25px;
+  background: transparent;
+  border: 2px solid var(--accent-secondary);
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+  background: var(--accent-secondary);
+  color: #000;
+}
+
+
+/* =========================
+   WORK EXPERIENCE - DETAIL
+========================= */
+
+.work-detail {
+  max-width: 850px;
+  margin: 140px auto 80px;
+  background: #181822;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.work-detail img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  background: #0f0f14;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.work-detail h2 {
+  color: var(--accent-primary);
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.work-detail h3 {
+  color: var(--accent-secondary);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.work-detail p {
+  color: var(--text-main);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.work-detail .btn-edit,
+.work-detail .btn-delete {
+  margin: 15px 10px 0;
+}
+
+.btn-delete {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 25px;
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  background: var(--accent-primary);
+  color: #fff;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  color: var(--accent-soft);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  color: var(--accent-primary);
+}
+
+
+/* =========================
+   FORMS (CREATE / EDIT)
+========================= */
+
+.work-form {
+  max-width: 700px;
+  margin: 140px auto;
+  background: #181822;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.work-form h2 {
+  text-align: center;
+  color: var(--accent-primary);
+  margin-bottom: 35px;
+}
+
+.work-form form p {
+  text-align: left;
+}
+
+.work-form button {
+  margin-top: 20px;
+}
+
+
+/* =========================
+   DELETE CONFIRMATION
+========================= */
+
+.delete-box {
+  max-width: 600px;
+  margin: 160px auto;
+  background: #181822;
+  padding: 45px;
+  border-radius: 25px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.delete-box h2 {
+  color: var(--accent-primary);
+  margin-bottom: 25px;
+}
+
+.delete-box p {
+  margin-bottom: 30px;
+}
+

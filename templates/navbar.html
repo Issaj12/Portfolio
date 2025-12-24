@@ -1,0 +1,43 @@
+<!-- Circular Toggle Navigation -->
+<div class="circle-wrapper">
+  <button class="circle-toggle" id="circleToggle">
+    Menu
+  </button>
+
+  <div class="circle-nav">
+    <a href="{% url 'Home' %}">Home</a>
+    <a href="{% url 'about' %}">About</a>
+    <a href="{% url 'skill_list' %}">Skills</a>
+    <a href="{% url 'list' %}">Work</a>
+    <a href="{% url 'contact' %}">Contact</a>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  const toggle = document.getElementById("circleToggle");
+  const wrapper = document.querySelector(".circle-wrapper");
+
+  toggle.addEventListener("click", () => {
+    wrapper.classList.toggle("open");
+  });
+
+const links = document.querySelectorAll(".circle-nav a");
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const top = section.offsetTop - 150;
+    if (scrollY >= top) current = section.id;
+  });
+
+  links.forEach(link => {
+    link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+  });
+});
+</script>
+

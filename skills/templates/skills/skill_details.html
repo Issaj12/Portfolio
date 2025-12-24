@@ -1,0 +1,20 @@
+{% extends 'start.html' %}
+{% block content %}
+<div class="skill-detail section">
+
+
+
+    <img src="{{ skill.picture.url }}" alt="{{ skill.name }}" style="max-width:300px; border-radius:15px; margin:20px 0;">
+      <h2>{{ skill.name }}</h2>
+    <p style="color: var(--text-main);">{{ skill.description }}</p>
+    <p style="color: var(--accent-soft);"><strong>Acquired at:</strong> {{ skill.acquired_from }}</p>
+
+    <div class="skill-actions">
+        <a href="{% url 'skill_list' %}" class="btn">Back to Skills</a>
+        <!-- Optional: Edit button for admins -->
+        {% if user.is_staff %}
+        <a href="{% url 'skill_update' skill.id %}" class="btn">Edit Skill</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

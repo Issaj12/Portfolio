@@ -1,0 +1,29 @@
+{% extends 'start.html' %}
+{% block content %}
+
+<section class="skill-list-container section">
+    <h2 class="skills-title">My Skills</h2>
+
+    <div class="portfolio">
+        {% for skill in skills %}
+        <div class="card">
+            <div class="skill-card-content">
+                <img src="{{ skill.picture.url }}"
+                     alt="{{ skill.name }}"
+                     class="skill-img">
+
+                <h3>{{ skill.name }}</h3>
+                <p>{{ skill.description|truncatechars:65|safe }}</p>
+
+                <a href="{% url 'skill_detail' skill.id %}" class="btn">
+                    View Skill
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No skills found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

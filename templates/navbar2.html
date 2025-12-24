@@ -1,0 +1,13 @@
+<nav class="navbar2">
+  <div class="container">
+    <a href="{% url 'admin_dashboard' %}" class="logo">Admin Dashboard</a>
+
+    <ul class="hide_list">
+     <li> <form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Logout</button>
+</form>
+</li>
+    </ul>
+  </div>
+</nav>
