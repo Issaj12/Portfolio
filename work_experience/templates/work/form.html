@@ -1,0 +1,15 @@
+{% extends "start.html" %}
+
+{% block content %}
+<div class="work-form">
+  <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Work Experience</h2>
+
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit" class="btn">Save</button>
+      <a href="{% url 'admin_dashboard' %}" class="back-link">Cancel</a>
+  </form>
+</div>
+{% endblock %}

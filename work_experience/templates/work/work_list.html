@@ -1,0 +1,35 @@
+{% extends 'start.html' %}
+
+{% block content %}
+{% if user.is_authenticated and user.is_staff %}<div class="skill-list-container"> {% endif %}
+<h2 class="section-title" style="text-align: center;">Work Experience</h2>
+
+
+<div class="work-grid">
+{% for work in works %}
+  <div class="work-card">
+     
+    {% if work.company_photo %}
+  <img src="{{ work.company_photo.url }}" alt="{{ work.company_name }}" width="120">
+{% endif %}
+
+
+    <h3>{{ work.company_name }}</h3>
+    <p>{{ work.position }}</p>
+
+    <a href="{% url 'work_detail' work.id %}" class="btn">
+      View Details
+    </a>
+
+    {% if user.is_staff %}
+      <a href="{% url 'work_update' work.id %}" class="btn">
+        Edit
+      </a>
+    {% endif %}
+
+  </div>
+{% endfor %}
+</div>
+</div>
+
+{% endblock %}
